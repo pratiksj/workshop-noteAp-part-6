@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 const Notes = (props) => {
   const dispatch = useDispatch();
   const notes = useSelector((state) => {
+    console.log(state.filter);
     if (state.filter === "ALL") {
       return state.notes;
     }
