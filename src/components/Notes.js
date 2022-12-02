@@ -3,14 +3,15 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Notes = (props) => {
   const dispatch = useDispatch();
-  const notes = useSelector((state) => {
-    console.log(state.filter);
-    if (state.filter === "ALL") {
-      return state.notes;
-    }
-    return state.filter === "important"
-      ? state.notes.filter((note) => note.important)
-      : state.notes.filter((note) => !note.important);
+  const notes = useSelector(({ filter, notes }) => {
+    console.log(filter);
+    const important = notes.filter((note) => note.important);
+    const unImportant = notes.filter((note) => !note.important);
+    return filter === "ALL"
+      ? notes
+      : filter === "NONIMPORTANT"
+      ? unImportant
+      : important;
   });
 
   const toggleImportance = (id) => {
