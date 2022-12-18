@@ -12,7 +12,7 @@ import { createSlice } from "@reduxjs/toolkit";
 //     id: 2,
 //   },
 // ];
-const generateId = () => Number((Math.random() * 1000000).toFixed(0));
+//const generateId = () => Number((Math.random() * 1000000).toFixed(0));
 
 // const noteReducer = (state = initialState, action) => {
 //   switch (action.type) {
@@ -56,11 +56,13 @@ const noteSlice = createSlice({
   reducers: {
     createNote(state, action) {
       const content = action.payload;
-      state.push({
-        content,
-        important: false,
-        id: generateId(),
-      });
+      // state.push({
+      //   content,
+      //   important: false,
+      //   id: generateId(),
+      // });
+      //state.push(content);
+      return [...state, content];
     },
     toggleImportanceOf(state, action) {
       const id = action.payload;
@@ -72,7 +74,7 @@ const noteSlice = createSlice({
       return state.map((note) => (note.id !== id ? note : changedNote));
     },
     appendNote(state, action) {
-      state.push(action.payload);
+      return [...state, action.payload];
     },
     setNotes(state, action) {
       return action.payload;
