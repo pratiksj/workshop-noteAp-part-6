@@ -24,6 +24,11 @@
       "content": "avatar",
       "important": false,
       "id": 5
+    },
+    {
+      "content": "integration",
+      "important": false,
+      "id": 6
     }
   ]
 }
