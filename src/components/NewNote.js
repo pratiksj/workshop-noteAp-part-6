@@ -1,14 +1,15 @@
-import { useDispatch } from "react-redux";
+//import { useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import { createNote } from "../reducer/noteReducer";
 //import noteService from "../services/notes";
 
-const NewNote = () => {
-  const dispatch = useDispatch();
+const NewNote = (props) => {
+  //const dispatch = useDispatch();
   const addNote = async (event) => {
     event.preventDefault();
     const content = event.target.note.value;
     event.target.note.value = "";
-    dispatch(createNote(content));
+    props.createNote(content);
   };
 
   // const addNote = async (event) => {
@@ -27,5 +28,15 @@ const NewNote = () => {
     </div>
   );
 };
+const mapDispatchToProps = {
+  createNote,
+};
 
-export default NewNote;
+const mapStateToProps = () => {
+  return {};
+};
+
+const ConnectedNewNote = connect(mapStateToProps, mapDispatchToProps)(NewNote);
+//export default connect(null, { createNote })(NewNote);
+
+export default ConnectedNewNote;
