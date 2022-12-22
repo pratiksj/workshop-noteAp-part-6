@@ -4,6 +4,8 @@ import { createNote } from "../reducer/noteReducer";
 //import noteService from "../services/notes";
 
 const NewNote = (props) => {
+  console.log("first", createNote);
+  console.log("second", props.createNote);
   //const dispatch = useDispatch();
   const addNote = async (event) => {
     event.preventDefault();
